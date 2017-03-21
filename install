@@ -31,13 +31,9 @@ echo ""
 
 sleep 1.5s
 
-rm -rf /root/.git
-rm -rf /root/VPS
-rm -rf /root/install
-rm -rf /root/vyvrn
-rm -rf /home/ubuntu/.git
-rm -rf /home/ubuntu/VPS
-rm -rf /home/ubuntu/install
+mkdir /etc/VpsPackdir 2>/dev/null
+mkdir /etc/VpsPackdir/limite 2>/dev/null
+mkdir /etc/VpsPackdir/senha 2>/dev/null
 
 clear
 
@@ -47,7 +43,7 @@ echo ""
 sleep 1.5s
 
 apt-get install git -y
-git clone https://github.com/jluanb/VPS.git
+git clone https://github.com/jluanb/VpsPack.git
 clear
 cd VPS
 rm -rf README.md
@@ -132,10 +128,9 @@ echo ".riotgames.com
 .qidian.com
 .zongheng.com
 .zennolab.com
- http://162.244.35.22/~userkdo/check/ping_14.php
- .hekko24.pl
- httpheader.net
- .emailchecker.io" > /etc/squid3/block.txt
+.hekko24.pl
+httpheader.net
+.emailchecker.io" > /etc/squid3/block.txt
 
 echo "Port 2510
 Port 443
@@ -239,14 +234,7 @@ sleep 1.5s
 	tar xf v0.8.5.tar.gz
 	cd ./nethogs-0.8.5/
 	make && make install
-	rm -rf /root/VPS
-	rm -fr /home/ubuntu/VPS
-	rm -rf /root/install
-	rm -rf /root/vyvrn
-        rm -rf /home/ubuntu/install
-	mkdir /etc/VpsPackdir
-	mkdir /etc/Vpspackdir/limite
 	exit
 fi
 
-vpsmanager
+vpspack
