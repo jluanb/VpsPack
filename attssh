@@ -1,7 +1,5 @@
 #!/bin/sh
 
-rm -rf /root/attssh
-
 echo "Digite o dominio"
 read -p ": " D1
 
@@ -74,7 +72,8 @@ loja.oi.com.br
 .sascdn.com
 .nethoes.com.br
 .vivomms.com.br
-.cloudfront.net" > /etc/squid3/payload.txt 
+.cloudfront.net
+.ddivulga.com" > /etc/squid3/payload.txt 
 
 echo ".riotgames.com
 .proxyradar.com
@@ -175,10 +174,6 @@ net.ipv4.tcp_mtu_probing=1
 net.ipv4.tcp_congestion_control=westwood" > /etc/sysctl.conf
 sysctl -p
 echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
-
-rm -rf /root/attssh
-mkdir /etc/VpsPackdir
-mkdir /etc/Vpspackdir/limite
 
 sleep 2s
 clear
