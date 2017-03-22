@@ -32,7 +32,7 @@ sleep 1.5s
 apt-get install git -y
 git clone https://github.com/jluanb/VpsPack.git
 clear
-cd VPS
+cd VpsPack
 rm -rf README.md
 rm -rf install
 for arqs in `ls`
