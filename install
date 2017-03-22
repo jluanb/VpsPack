@@ -1,5 +1,6 @@
 #!/bin/sh
 
+rm -rf /root/install
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Atualizando" ; tput sgr0
 echo ""
 
@@ -224,5 +225,5 @@ sleep 1.5s
 	make && make install
 	exit
 fi
-
+rm -rf /root/install
 vpspack
