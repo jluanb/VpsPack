@@ -1,6 +1,7 @@
 #!/bin/sh
 
 rm -rf /root/attrepo
+rm -rf /root/VpsPack
 clear
 sleep 2s
 
@@ -32,4 +33,5 @@ done
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Atualizado..." ; tput sgr0
 echo ""
 rm -rf /root/attrepo
+rm -rf /root/VpsPack
 vpspack
