@@ -24,19 +24,6 @@ IP4=$(host $D4 | awk '{print $NF}')
 apt-get update
 apt-get upgrade -y
 
-clear
-
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Removendo restos de instalação antiga" ; tput sgr0
-echo ""
-
-sleep 1.5s
-
-mkdir /etc/VpsPackdir 2>/dev/null
-mkdir /etc/VpsPackdir/limite 2>/dev/null
-mkdir /etc/VpsPackdir/senha 2>/dev/null
-
-clear
-
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando GIT" ; tput sgr0
 echo ""
 
@@ -112,7 +99,8 @@ loja.oi.com.br
 .sascdn.com
 .nethoes.com.br
 .vivomms.com.br
-.cloudfront.net" > /etc/squid3/payload.txt 
+.cloudfront.net
+.ddivulga.com" > /etc/squid3/payload.txt 
 
 echo ".riotgames.com
 .proxyradar.com
