@@ -1,6 +1,8 @@
 #!/bin/sh
 
 rm -rf /root/install
+rm -rf /root/VpsPack
+rm -rf /root/vypbA
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Atualizando" ; tput sgr0
 echo ""
 
@@ -224,6 +226,9 @@ sleep 1.5s
 	cd ./nethogs-0.8.5/
 	make && make install
 	exit
-fi
 rm -rf /root/install
+rm -rf /root/VpsPack
+rm -rf /root/vypbA
+fi
+
 vpspack
