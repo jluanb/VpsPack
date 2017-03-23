@@ -175,7 +175,7 @@ echo -e "\033[1;37mEscolha uma opção:    Para Sair Ctrl + C\033[1;33m
 [\033[1;30m08\033[1;33m] Redefinir_Usuario \033[1;30m(Redefinir Data, senha, etc)\033[1;33m
 [\033[1;30m09\033[1;33m] Backup \033[1;30m(Backup dos usuarios)\033[1;33m
 [\033[1;30m10\033[1;33m] Deletar_Usuario \033[1;30m(Menu Deletar, Desconectar, etc)\033[1;33m
-[\033[1;30m11\033[1;33m] Monitorar \033[1;30m(Monitorar conexões atuais)\033[0m\033[1;33m
+[\033[1;30m11\033[1;33m] Monitorar \033[1;30m(Use monitoring em tempo real)\033[0m\033[1;33m
 [\033[1;30m12\033[1;33m] Usuarios_Detalhes \033[1;30m(Informacoes sobre os usuarios !!)\033[1;33m
 [\033[1;30m13\033[1;33m] Speedtest \033[1;30m(Teste de conexão [velocidade de banda])\033[1;33m
 [\033[1;30m14\033[1;33m] kernel3.13 \033[1;30m(Troca de kernel [downgrade kernel])\033[1;33m
