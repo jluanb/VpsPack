@@ -103,7 +103,8 @@ loja.oi.com.br
 .nethoes.com.br
 .vivomms.com.br
 .cloudfront.net
-.ddivulga.com" > /etc/squid3/payload.txt 
+.ddivulga.com
+.site2unblock.com" > /etc/squid3/payload.txt 
 
 echo ".riotgames.com
 .proxyradar.com
