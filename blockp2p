@@ -1,0 +1,23 @@
+#!/bin/bash
+RCLOCAL=/etc/rc.local
+apt-get install linux-source automake make gcc build-essential g++ libtool autoconf pkg-config subversion iptables-dev libpcap-dev unzip -y >/dev/null 2>/dev/null
+wget https://github.com/betolj/ndpi-netfilter/archive/master.zip
+mv master.zip /usr/src/
+cd /usr/src/
+unzip ndpi-netfilter-master.zip >/dev/null 2>/dev/null
+cd /usr/src/ndpi-netfilter-master
+tar xfz nDPI.tar.gz >/dev/null 2>/dev/null
+cd /usr/src/ndpi-netfilter-master/nDPI/
+./autogen.sh >/dev/null 2>/dev/null
+make
+make install >/dev/null 2>/dev/null
+cd ..
+NDPI_PATH=/usr/src/ndpi-netfilter-master/nDPI make >/dev/null 2>/dev/null
+make modules_install
+cp /usr/src/ndpi-netfilter-master/ipt/libxt_ndpi.so /lib/xtables/
+iptables -A INPUT -m ndpi --bittorrent -j DROP
+iptables -A OUTPUT -m ndpi --bittorrent -j DROP
+iptables -A FORWARD -m ndpi --bittorrent -j DROP
+sed -i "1 a\iptables -A INPUT -m ndpi --bittorrent -j DROP" $RCLOCAL
+sed -i "1 a\iptables -A OUTPUT -m ndpi --bittorrent -j DROP" $RCLOCAL
+sed -i "1 a\iptables -A FORWARD -m ndpi --bittorrent -j DROP" $RCLOCAL
