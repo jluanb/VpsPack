@@ -1,18 +1,18 @@
 #!/bin/bash
 RCLOCAL=/etc/rc.local
-apt-get install linux-source automake make gcc build-essential g++ libtool autoconf pkg-config subversion iptables-dev libpcap-dev unzip -y >/dev/null 2>/dev/null
+apt-get install linux-source automake make gcc build-essential g++ libtool autoconf pkg-config subversion iptables-dev libpcap-dev unzip -y
 wget https://github.com/betolj/ndpi-netfilter/archive/master.zip
 mv master.zip /usr/src/
 cd /usr/src/
-unzip ndpi-netfilter-master.zip >/dev/null 2>/dev/null
+unzip ndpi-netfilter-master.zip 
 cd /usr/src/ndpi-netfilter-master
-tar xfz nDPI.tar.gz >/dev/null 2>/dev/null
+tar xfz nDPI.tar.gz 
 cd /usr/src/ndpi-netfilter-master/nDPI/
-./autogen.sh >/dev/null 2>/dev/null
+./autogen.sh 
 make
-make install >/dev/null 2>/dev/null
+make install
 cd ..
-NDPI_PATH=/usr/src/ndpi-netfilter-master/nDPI make >/dev/null 2>/dev/null
+NDPI_PATH=/usr/src/ndpi-netfilter-master/nDPI make
 make modules_install
 cp /usr/src/ndpi-netfilter-master/ipt/libxt_ndpi.so /lib/xtables/
 iptables -A INPUT -m ndpi --bittorrent -j DROP
