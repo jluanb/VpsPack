@@ -30,3 +30,4 @@ sed -i "1 a\iptables -A FORWARD -m ndpi --bittorrent -j DROP" $RCLOCAL
 echo -e "Iptables Aplicado!\033[0m"
 rm -rf /usr/src/master.zip
 rm -rf /usr/src/ndpi-netfilter-master
+echo -e "\033[1;32m             Instalação completa\033[0m"
