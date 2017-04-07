@@ -1,23 +1,23 @@
 #!/bin/bash
 RCLOCAL=/etc/rc.local
 rm -rf /usr/src/master.zip
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando dependencias" ; tput sgr0
+echo -e "\033[1;31m           Instalador nDPI\n\033[1;37mInstalando Dependencias etc...\033[0m"
 apt-get install linux-source automake make gcc build-essential g++ libtool autoconf pkg-config subversion iptables-dev libpcap-dev unzip -y >/dev/null 2>/dev/null
 wget https://github.com/betolj/ndpi-netfilter/archive/master.zip >/dev/null 2>/dev/null
 mv master.zip /usr/src/
 cd /usr/src/
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Extraindo nDPI" ; tput sgr0
-unzip master.zip
+echo -e "\033[1;37mFazendo download..."
+unzip master.zip >/dev/null 2>/dev/null
 cd /usr/src/ndpi-netfilter-master
 tar xfz nDPI.tar.gz 
 cd /usr/src/ndpi-netfilter-master/nDPI/
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Configurando e instalando nDPi" ; tput sgr0
+echo -e "\033[1;37mConfigurando e Instalando"
 ./autogen.sh >/dev/null 2>/dev/null
 make >/dev/null 2>/dev/null
 make install >/dev/null 2>/dev/null
 cd /usr/src/ndpi-netfilter-master/
 NDPI_PATH=/usr/src/ndpi-netfilter-master/nDPI make >/dev/null 2>/dev/null
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando Modulos" ; tput sgr0
+echo -e "\033[1;37mInstalando modulos"
 make modules_install >/dev/null 2>/dev/null
 cp /usr/src/ndpi-netfilter-master/ipt/libxt_ndpi.so /lib/xtables/
 iptables -A INPUT -m ndpi --bittorrent -j DROP
@@ -26,5 +26,5 @@ iptables -A FORWARD -m ndpi --bittorrent -j DROP
 sed -i "1 a\iptables -A INPUT -m ndpi --bittorrent -j DROP" $RCLOCAL
 sed -i "1 a\iptables -A OUTPUT -m ndpi --bittorrent -j DROP" $RCLOCAL
 sed -i "1 a\iptables -A FORWARD -m ndpi --bittorrent -j DROP" $RCLOCAL
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Iptables Aplicado!" ; tput sgr0
+echo -e "Iptables Aplicado!\033[0m"
 rm -rf /usr/src/master.zip
