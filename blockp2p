@@ -1,6 +1,7 @@
 #!/bin/bash
 RCLOCAL=/etc/rc.local
 rm -rf /usr/src/master.zip
+rm -rf /usr/src/ndpi-netfilter-master
 echo -e "\033[1;31m           Instalador nDPI\n\033[1;37mInstalando Dependencias etc...\033[0m"
 apt-get install linux-source automake make gcc build-essential g++ libtool autoconf pkg-config subversion iptables-dev libpcap-dev unzip -y >/dev/null 2>/dev/null
 wget https://github.com/betolj/ndpi-netfilter/archive/master.zip >/dev/null 2>/dev/null
@@ -28,3 +29,4 @@ sed -i "1 a\iptables -A OUTPUT -m ndpi --bittorrent -j DROP" $RCLOCAL
 sed -i "1 a\iptables -A FORWARD -m ndpi --bittorrent -j DROP" $RCLOCAL
 echo -e "Iptables Aplicado!\033[0m"
 rm -rf /usr/src/master.zip
+rm -rf /usr/src/ndpi-netfilter-master
