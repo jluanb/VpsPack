@@ -1,17 +1,24 @@
 #!/bin/bash
 RCLOCAL=/etc/rc.local
-apt-get install linux-source automake make gcc build-essential g++ libtool autoconf pkg-config subversion iptables-dev libpcap-dev unzip -y
+
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando dependencias" ; tput sgr0
+echo ""
+apt-get install linux-source automake make gcc build-essential g++ libtool autoconf pkg-config subversion iptables-dev libpcap-dev unzip -y >/dev/null 2>/dev/null
 wget https://github.com/betolj/ndpi-netfilter/archive/master.zip
 mv master.zip /usr/src/
 cd /usr/src/
-unzip master.zip 
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Extraindo nDPI" ; tput sgr0
+echo ""
+unzip master.zip >/dev/null 2>/dev/null
 cd /usr/src/ndpi-netfilter-master
 tar xfz nDPI.tar.gz 
 cd /usr/src/ndpi-netfilter-master/nDPI/
-./autogen.sh 
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Configurando e instalando nDPi" ; tput sgr0
+echo ""
+./autogen.sh >/dev/null 2>/dev/null
 make
 make install
-cd ..
+cd /usr/src/ndpi-netfilter-master/
 NDPI_PATH=/usr/src/ndpi-netfilter-master/nDPI make
 make modules_install
 cp /usr/src/ndpi-netfilter-master/ipt/libxt_ndpi.so /lib/xtables/
