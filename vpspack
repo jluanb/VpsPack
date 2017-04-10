@@ -219,7 +219,7 @@ case $opcao in
   14)
    kernel3.13;;
   15)
-   echo "   1) ipp2p"
+         echo "   1) ipp2p"
 	 echo "   2) nDPI"
 	 read -p "BlockTorrent [1-2]: " -e -i 2 p2p
 	 case $p2p in
@@ -227,7 +227,7 @@ case $opcao in
 		     ipp2p;;
 		    2) 
 		     blockp2p;;
-         esac
+                    esac
   16)
    vpn;;
   17)
