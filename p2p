@@ -1,0 +1,17 @@
+#!/bin/sh
+
+clear
+echo "     \033[40;1;37m  Blockerp2p  \033[0m"
+echo "\033[1;37mEscolha uma das opço?s:    \033[1;37mPara Sair Ctrl + C\033[1;33m
+[1] Ipp2p \033[1;30m(Ipp2p X-tables-addon )\033[1;33m
+[2] Blockp2p \033[1;30m(nDPI OBS: Vps fica lenta  )\033[;0m"
+read -p ": " opcao
+
+case $opcao in
+1)
+ ipp2p;;
+2)
+ blockp2p;;
+ *)
+  id > /dev/null 2> /dev/null
+esac
