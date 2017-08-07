@@ -9,20 +9,8 @@ echo ""
 echo "Digite o dominio"
 read -p ": " D1
 
-echo "Digite o dominio"
-read -p ": " D2
-
-echo "Digite o dominio"
-read -p ": " D3
-
-echo "Digite o dominio"
-read -p ": " D4
-
 IP=$(wget -qO- ipv4.icanhazip.com)
 IP1=$(host $D1 | awk '{print $NF}')
-IP2=$(host $D2 | awk '{print $NF}')
-IP3=$(host $D3 | awk '{print $NF}')
-IP4=$(host $D4 | awk '{print $NF}')
 
 apt-get update
 apt-get upgrade -y
@@ -59,12 +47,6 @@ echo "acl url1 dstdomain -i 127.0.0.1
 acl url3 dstdomain -i $IP
 acl url3 dstdomain -i $IP1
 acl url3 dstdomain -i $D1
-acl url3 dstdomain -i $IP2
-acl url3 dstdomain -i $D2
-acl url3 dstdomain -i $IP3
-acl url3 dstdomain -i $D3
-acl url3 dstdomain -i $IP4
-acl url3 dstdomain -i $D4
 acl block dstdomain /etc/squid3/block.txt
 acl payload dstdomain -i /etc/squid3/payload.txt
 http_access allow url1
@@ -76,7 +58,7 @@ http_access deny all
  
 #http_port 8080
 http_port 80
-#http_port 3128
+http_port 3128
 visible_hostname luan-ssh
 forwarded_for off
 via off" > /etc/squid3/squid.conf
@@ -107,7 +89,9 @@ loja.oi.com.br
 .site2unblock.com
 google.com
 .starwarsclub.co
-.clarobr.mobi" > /etc/squid3/payload.txt 
+.clarobr.mobi
+.operamini.com
+.mobicare.com.br" > /etc/squid3/payload.txt 
 
 echo ".riotgames.com
 .proxyradar.com
