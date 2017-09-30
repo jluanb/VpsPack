@@ -56,9 +56,10 @@ http_access allow payload
 http_access deny block
 http_access deny all
  
-#http_port 8080
+http_port 8080
 http_port 80
 http_port 3128
+http_port 8799
 visible_hostname luan-ssh
 forwarded_for off
 via off" > /etc/squid3/squid.conf
@@ -91,7 +92,12 @@ google.com
 .starwarsclub.co
 .clarobr.mobi
 .operamini.com
-.mobicare.com.br" > /etc/squid3/payload.txt 
+.mobicare.com.br/api/android-v1/1/home
+.oi.com.br/gratis
+integradorproxy.bizvox.com.br:443
+.serving-sys.com
+.engenharia.claro.com.br/woa/rest/SegurancaExternaSSO/v1/sso/rede/telefonia/codigo/gerar?_=1506635995265
+.terra.com.br" > /etc/squid3/payload.txt 
 
 echo ".riotgames.com
 .proxyradar.com
@@ -120,6 +126,7 @@ ServerKeyBits 1024
 SyslogFacility AUTH
 LogLevel INFO
 LoginGraceTime 60
+PermitTunnel yes
 PermitRootLogin yes
 StrictModes yes
 RSAAuthentication yes
@@ -190,6 +197,10 @@ net.ipv4.tcp_mtu_probing=1
 net.ipv4.tcp_congestion_control=westwood" > /etc/sysctl.conf
 sysctl -p
 echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
+
+apt-get install dropbear -y 2>/dev/null
+echo "NO_START=0
+DROPBEAR_PORT=81" > /etc/default/dropbear
 
 
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando Vnstat, Pktstat, Ntop, Nethogs e dependencias" ; tput sgr0
