@@ -39,30 +39,119 @@ tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando Squ
 
 sleep 2s
 
-apt-get install squid3 -y
-apt-get install squid -y
-
-echo "acl url1 dstdomain -i 127.0.0.1
-#acl url2 dstdomain -i localhost
-acl url3 dstdomain -i $IP
-acl url3 dstdomain -i $IP1
-acl url3 dstdomain -i $D1
-acl block dstdomain /etc/squid3/block.txt
-acl payload dstdomain -i /etc/squid3/payload.txt
-http_access allow url1
-#http_access allow url2
-http_access allow url3
-http_access allow payload
-http_access deny block
-http_access deny all
+echo -e "\033[01;31mConfigurando, Aguarde...\033[0m"
+apt-get install squid3 -y 1> /dev/null 2> /dev/null
+apt-get install squid -y 1> /dev/null 2> /dev/null
+apt-get install squid* -y 1> /dev/null 2> /dev/null
+apt-get install ufw -y 1> /dev/null 2> /dev/null
  
-http_port 8080
-http_port 80
-http_port 3128
-http_port 8799
-visible_hostname luan-ssh
-forwarded_for off
-via off" > /etc/squid3/squid.conf
+rm /etc/ssh/sshd_custom 1>/dev/null 2>/dev/null
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+cat /etc/ssh/sshd_config |grep -v -i allowusers |grep -v -i passwordauthen |grep -v -i uselogin |grep -v -i permitrootlogin |grep -v -i permittunnel >> /etc/ssh/sshd_custom
+rm /etc/ssh/sshd_config
+cp /etc/ssh/sshd_custom /etc/ssh/sshd_config
+sleep 1s
+echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+echo "Port 443" >> /etc/ssh/sshd_config
+echo "Port 22" >> /etc/ssh/sshd_config
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+echo "PermitTunnel yes" >> /etc/ssh/sshd_config
+echo "UseDns no" >> /etc/ssh/sshd_config
+echo "Banner /etc/banner.txt" >> /etc/ssh/sshd_config
+
+service ssh restart 1> /dev/null 2> /dev/null
+service sshd restart 1> /dev/null 2> /dev/null
+/etc/init.d/sshd restart
+/etc/init.d/ssh restart
+
+cd /etc/squid*
+echo "http_port 80" > squid.conf
+echo "http_port 8080" >> squid.conf
+echo "http_port 8799" >> squid.conf
+echo "http_port 3128" >> squid.conf
+echo "http_port 1080" >> squid.conf
+echo "visible_hostname luan-ssh" >> squid.conf
+echo "acl ip dstdomain -i $IP" >> squid.conf
+echo "acl ip dstdomain -i $IP1" >> squid.conf
+echo "acl luan dstdomain -i 127.0.0.1" >> squid.conf
+echo "acl luan dstdomain -i 200.169.126.11" >> squid.conf
+echo "acl luan dstdomain -i .claro.com.br" >> squid.conf
+echo "acl luan dstdomain -i .claro.com" >> squid.conf
+echo "acl luan dstdomain -i .vivo.com.br" >> squid.conf
+echo "acl luan dstdomain -i .oi.com.br" >> squid.conf
+echo "acl luan dstdomain -i .clarosomdechamada.com.br" >> squid.conf
+echo "acl luan dstdomain -i .bradescocelular.com.br" >> squid.conf
+echo "acl luan dstdomain -i .tim.com.br" >> squid.conf
+echo "acl luan dstdomain -i .wcad.com" >> squid.conf
+echo "acl luan dstdomain -i .ddivulga.com" >> squid.conf
+echo "acl luan dstdomain -i localhost" >> squid.conf
+echo "acl luan dstdomain -i localnet" >> squid.conf
+echo "acl accept dstdomain -i GET" >> squid.conf
+echo "acl accept dstdomain -i POST" >> squid.conf
+echo "acl accept dstdomain -i OPTIONS" >> squid.conf
+echo "acl accept dstdomain -i CONNECT" >> squid.conf
+echo "acl accept dstdomain -i PUT" >> squid.conf
+echo "acl HEAD dstdomain -i HEAD" >> squid.conf
+echo "acl accept dstdomain -i TRACE" >> squid.conf
+echo "acl accept dstdomain -i OPTIONS" >> squid.conf
+echo "acl accept dstdomain -i PATCH" >> squid.conf
+echo "acl accept dstdomain -i PROPATCH" >> squid.conf
+echo "acl accept dstdomain -i DELETE" >> squid.conf
+echo "acl accept dstdomain -i REQUEST" >> squid.conf
+echo "acl accept dstdomain -i METHOD" >> squid.conf
+echo "acl accept dstdomain -i NETDATA" >> squid.conf
+echo "acl accept dstdomain -i MOVE" >> squid.conf
+echo 'acl accept dstdomain -i "/etc/squid3/payload.txt"' >> squid.conf
+echo "acl all src 0.0.0.0/0" >> squid.conf
+echo "http_access allow ip" >> squid.conf
+echo "http_access allow luan" >> squid.conf
+echo "http_access allow accept" >> squid.conf
+echo "http_access allow HEAD" >> squid.conf
+echo "http_access deny all" >> squid.conf
+echo "forwarded_for off" >> squid.conf
+echo "request_header_access Allow allow all" >> squid.conf
+echo "request_header_access Authorization allow all" >> squid.conf
+echo "request_header_access WWW-Authenticate allow all" >> squid.conf
+echo "request_header_access Proxy-Authorization allow all" >> squid.conf
+echo "request_header_access X-Online-Host allow all" >> squid.conf
+echo "request_header_access Proxy-Authenticate allow all" >> squid.conf
+echo "request_header_access Cache-Control allow all" >> squid.conf
+echo "request_header_access Content-Encoding allow all" >> squid.conf
+echo "request_header_access Content-Length allow all" >> squid.conf
+echo "request_header_access Content-Type allow all" >> squid.conf
+echo "request_header_access Date allow all" >> squid.conf
+echo "request_header_access Expires allow all" >> squid.conf
+echo "request_header_access Host allow all" >> squid.conf
+echo "request_header_access If-Modified-Since allow all" >> squid.conf
+echo "request_header_access Last-Modified allow all" >> squid.conf
+echo "request_header_access Location allow all" >> squid.conf
+echo "request_header_access Pragma allow all" >> squid.conf
+echo "request_header_access Accept allow all" >> squid.conf
+echo "request_header_access Accept-Charset allow all" >> squid.conf
+echo "request_header_access Accept-Encoding allow all" >> squid.conf
+echo "request_header_access Accept-Language allow all" >> squid.conf
+echo "request_header_access Content-Language allow all" >> squid.conf
+echo "request_header_access Mime-Version allow all" >> squid.conf
+echo "request_header_access Retry-After allow all" >> squid.conf
+echo "request_header_access Title allow all" >> squid.conf
+echo "request_header_access Connection allow all" >> squid.conf
+echo "request_header_access Proxy-Connection allow all" >> squid.conf
+echo "request_header_access User-Agent allow all" >> squid.conf
+echo "request_header_access Cookie allow all" >> squid.conf
+echo "request_header_access Referer allow all" >> squid.conf
+echo "request_header_access Host allow all" >> squid.conf
+echo "via off" >> squid.conf
+ 
+service squid* restart 1> /dev/null 2> /dev/null
+service squid3 restart 1> /dev/null 2> /dev/null
+/etc/init.d/squid* restart 1> /dev/null 2> /dev/null
+ 
+ufw allow 443 1>/dev/null 2>/dev/null
+ufw allow 80 1>/dev/null 2>/dev/null
+ufw allow 8080 1>/dev/null 2>/dev/null
+ufw allow 8799 1>/dev/null 2>/dev/null
+ufw allow 3128 1>/dev/null 2>/dev/null
+ufw allow 1080 1>/dev/null 2>/dev/null
 
 echo ".claro.com.br
 .claro.com
@@ -99,62 +188,9 @@ integradorproxy.bizvox.com.br:443
 .engenharia.claro.com.br/woa/rest/SegurancaExternaSSO/v1/sso/rede/telefonia/codigo/gerar?_=1506635995265
 .terra.com.br" > /etc/squid3/payload.txt 
 
-echo ".riotgames.com
-.proxyradar.com
-.proxyfire.com
-.proxyfire.net
-.freeproxies.gq
-.yahoodns.net
-.waw.pl/testproxy.php
-.top/proxyheader.php
-.sohu.com
-.qq.com
-.cybersyndrome.net
-.qidian.com
-.zongheng.com
-.zennolab.com
-.hekko24.pl
-httpheader.net
-.emailchecker.io" > /etc/squid3/block.txt
-
-echo "Port 2510
-Port 443
-Protocol 2
-#Compression yes
-KeyRegenerationInterval 3600
-ServerKeyBits 1024
-SyslogFacility AUTH
-LogLevel INFO
-LoginGraceTime 60
-PermitTunnel yes
-PermitRootLogin yes
-StrictModes yes
-RSAAuthentication yes
-PubkeyAuthentication yes
-IgnoreRhosts yes
-RhostsRSAAuthentication no
-HostbasedAuthentication no
-PermitEmptyPasswords no
-ChallengeResponseAuthentication no
-PasswordAuthentication yes
-X11Forwarding yes
-X11DisplayOffset 10
-PrintMotd no
-PrintLastLog yes
-TCPKeepAlive yes
-Banner /etc/banner.txt
-#UseLogin no
-AcceptEnv LANG LC_*
-Subsystem sftp /usr/lib/openssh/sftp-server
-UsePAM yes
-UseDns no" > /etc/ssh/sshd_config
-
 echo "Digite a msg do Banner"
 read -p ": " banner
 echo "$banner" > /etc/banner.txt
-
-service squid3 restart
-service ssh restart
 
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Otimizando Sysctl" ; tput sgr0
 echo ""
@@ -197,11 +233,6 @@ net.ipv4.tcp_mtu_probing=1
 net.ipv4.tcp_congestion_control=westwood" > /etc/sysctl.conf
 sysctl -p
 echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
-
-apt-get install dropbear -y 2>/dev/null
-echo "NO_START=0
-DROPBEAR_PORT=81" > /etc/default/dropbear
-
 
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando Vnstat, Pktstat, Ntop, Nethogs e dependencias" ; tput sgr0
 echo ""
