@@ -95,7 +95,7 @@ echo "acl accept dstdomain -i REQUEST" >> squid.conf
 echo "acl accept dstdomain -i METHOD" >> squid.conf
 echo "acl accept dstdomain -i NETDATA" >> squid.conf
 echo "acl accept dstdomain -i MOVE" >> squid.conf
-echo 'acl accept dstdomain -i "/etc/squid3/payload.txt"' >> squid.conf
+echo '#acl accept dstdomain -i "/etc/squid3/payload.txt"' >> squid.conf
 echo "acl all src 0.0.0.0/0" >> squid.conf
 echo "http_access allow ip" >> squid.conf
 echo "http_access allow luan" >> squid.conf
