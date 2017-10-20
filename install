@@ -52,6 +52,7 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PermitTunnel yes" >> /etc/ssh/sshd_config
 echo "UseDns no" >> /etc/ssh/sshd_config
 echo "Banner /etc/banner.txt" >> /etc/ssh/sshd_config
+echo "Subsystem sftp /usr/lib/openssh/sftp-server" >> /etc/ssh/sshd_config
 
 service ssh restart 1> /dev/null 2> /dev/null
 /etc/init.d/ssh restart
