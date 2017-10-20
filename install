@@ -71,7 +71,6 @@ echo "acl ip dstdomain -i $D2" >> squid.conf
 echo "acl luan dstdomain -i 127.0.0.1" >> squid.conf
 echo "acl luan dstdomain -i 200.169.126.11" >> squid.conf
 echo "acl luan dstdomain -i .claro.com.br" >> squid.conf
-echo "acl luan dstdomain -i .claro.com" >> squid.conf
 echo "acl luan dstdomain -i .vivo.com.br" >> squid.conf
 echo "acl luan dstdomain -i .oi.com.br" >> squid.conf
 echo "acl luan dstdomain -i .clarosomdechamada.com.br" >> squid.conf
@@ -148,7 +147,6 @@ ufw allow 3128 1>/dev/null 2>/dev/null
 ufw allow 1080 1>/dev/null 2>/dev/null
 
 echo ".claro.com.br
-.claro.com
 .claroideas.com
 .claroideias.com.br
 .claromusica.com
