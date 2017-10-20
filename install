@@ -45,7 +45,7 @@ sleep 2s
 apt-get install squid3 -y 1> /dev/null 2> /dev/null
 apt-get install ufw -y 1> /dev/null 2> /dev/null
  
-echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+echo "PasswordAuthentication yes" > /etc/ssh/sshd_config
 echo "Port 443" >> /etc/ssh/sshd_config
 echo "Port 2510" >> /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
