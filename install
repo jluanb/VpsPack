@@ -54,8 +54,6 @@ echo "UseDns no" >> /etc/ssh/sshd_config
 echo "Banner /etc/banner.txt" >> /etc/ssh/sshd_config
 
 service ssh restart 1> /dev/null 2> /dev/null
-service sshd restart 1> /dev/null 2> /dev/null
-/etc/init.d/sshd restart
 /etc/init.d/ssh restart
 
 cd /etc/squid*
