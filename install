@@ -56,7 +56,7 @@ cp /etc/ssh/sshd_custom /etc/ssh/sshd_config
 sleep 1s
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 echo "Port 443" >> /etc/ssh/sshd_config
-echo "Port 22" >> /etc/ssh/sshd_config
+echo "Port 2510" >> /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PermitTunnel yes" >> /etc/ssh/sshd_config
 echo "UseDns no" >> /etc/ssh/sshd_config
