@@ -235,6 +235,8 @@ DROPBEAR_PORT=81" > /etc/default/dropbear
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando Vnstat, Pktstat, Ntop, Nethogs e dependencias" ; tput sgr0
 echo ""
 
+cd ..
+
 sleep 1.5s
 
 	apt-get install vnstat -y
