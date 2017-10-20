@@ -44,16 +44,8 @@ sleep 2s
 
 echo -e "\033[01;31mConfigurando, Aguarde...\033[0m"
 apt-get install squid3 -y 1> /dev/null 2> /dev/null
-apt-get install squid -y 1> /dev/null 2> /dev/null
-apt-get install squid* -y 1> /dev/null 2> /dev/null
 apt-get install ufw -y 1> /dev/null 2> /dev/null
  
-rm /etc/ssh/sshd_custom 1>/dev/null 2>/dev/null
-cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-cat /etc/ssh/sshd_config |grep -v -i allowusers |grep -v -i passwordauthen |grep -v -i uselogin |grep -v -i permitrootlogin |grep -v -i permittunnel >> /etc/ssh/sshd_custom
-rm /etc/ssh/sshd_config
-cp /etc/ssh/sshd_custom /etc/ssh/sshd_config
-sleep 1s
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 echo "Port 443" >> /etc/ssh/sshd_config
 echo "Port 2510" >> /etc/ssh/sshd_config
@@ -147,7 +139,6 @@ echo "request_header_access Referer allow all" >> squid.conf
 echo "request_header_access Host allow all" >> squid.conf
 echo "via off" >> squid.conf
  
-service squid* restart 1> /dev/null 2> /dev/null
 service squid3 restart 1> /dev/null 2> /dev/null
 /etc/init.d/squid* restart 1> /dev/null 2> /dev/null
  
