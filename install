@@ -9,6 +9,9 @@ echo ""
 echo "Digite o dominio"
 read -p ": " D1
 
+echo "Digite o dominio"
+read -p ": " D2
+
 IP=$(wget -qO- ipv4.icanhazip.com)
 IP1=$(host $D1 | awk '{print $NF}')
 
@@ -73,6 +76,8 @@ echo "http_port 1080" >> squid.conf
 echo "visible_hostname luan-ssh" >> squid.conf
 echo "acl ip dstdomain -i $IP" >> squid.conf
 echo "acl ip dstdomain -i $IP1" >> squid.conf
+echo "acl ip dstdomain -i $D1" >> squid.conf
+echo "acl ip dstdomain -i $D2" >> squid.conf
 echo "acl luan dstdomain -i 127.0.0.1" >> squid.conf
 echo "acl luan dstdomain -i 200.169.126.11" >> squid.conf
 echo "acl luan dstdomain -i .claro.com.br" >> squid.conf
