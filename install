@@ -147,7 +147,6 @@ ufw allow 3128 1>/dev/null 2>/dev/null
 ufw allow 1080 1>/dev/null 2>/dev/null
 
 echo ".claro.com.br
-.claroideas.com
 .claroideias.com.br
 .claromusica.com
 .clarosomdechamada.com.br
