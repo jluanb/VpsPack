@@ -240,7 +240,7 @@ sleep 1.5s
 
 	apt-get install vnstat -y
 	apt-get install pktstat -y
-	apt-get install ntop graphviz -y
+	#apt-get install ntop graphviz -y
 	apt-get install make g++ -y
 	apt-get install libncurses5-dev -y
 	apt-get install libpcap-dev -y
