@@ -182,6 +182,7 @@ echo -e "\033[1;37mEscolha uma opção:    Para Sair Ctrl + C\033[1;33m
 [\033[1;30m16\033[1;33m] vpn \033[1;30m(Serviço Openvpn [OpenVPN])\033[1;33m
 [\033[1;30m17\033[1;33m] attrepo \033[1;30m(Att git repo [Att repo comandos])\033[1;33m
 [\033[1;30m18\033[1;33m] attssh \033[1;30m(Att squid/ssh [Att squid/ssh])\033[1;33m
+[\033[1;30m18\033[1;33m] Install Socks \033[1;30m(Instalar Socks5)\033[1;33m
 [\033[1;30m19\033[1;33m] Sistema_Detalhes \033[1;30m(Detalhes sobre o Sistema)\033[0m"
 read -p ": " opcao
 else
@@ -227,5 +228,7 @@ case $opcao in
   18)
    attssh;;
   19)
+   socks;;
+  20)
    sistemadetalhes;;
 esac
