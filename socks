@@ -59,7 +59,7 @@ sleep 2
 
 mv kingate.init.d /etc/init.d/kingate
 
-chmod +x /etc/init.d/kingate
+chmod +x /etc/init.d/kingate/kingate.init.d
 
 ############################################################
 #                                                          #
@@ -67,8 +67,8 @@ chmod +x /etc/init.d/kingate
 
 echo " Verificar se Socks foi Instalado Corretamente"
 
-/etc/init.d/kingate stop
-/etc/init.d/kingate start
+/etc/init.d/kingate/kingate.init.d stop
+/etc/init.d/kingate/kingate.init.d start
 
 read " Tecle Enter para Sair"
 
