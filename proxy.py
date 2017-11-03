@@ -49,7 +49,7 @@ class SimpleHTTPProxyHandler(BaseHTTPRequestHandler):
 
         req = self
         reqbody = None
-        req.path = "https://%s/" % req.path.replace(':443', '')
+        req.path = "https://%s/" % req.path.replace(':80', '')
 
         replaced_reqbody = self.request_handler(req, reqbody)
         if replaced_reqbody is True:
@@ -298,7 +298,7 @@ def test(HandlerClass=SimpleHTTPProxyHandler, ServerClass=ThreadingHTTPServer, p
         port = int(sys.argv[1])
     else:
         port = 80
-    server_address = ('35.197.94.36', port)
+    server_address = ('', port)
 
     HandlerClass.protocol_version = protocol
     httpd = ServerClass(server_address, HandlerClass)
