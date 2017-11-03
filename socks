@@ -1,4 +1,5 @@
 #bin/bash
+service squid3 stop
 cd ..
 cd /bin
 screen python proxy.py
