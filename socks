@@ -1,3 +1,4 @@
 #bin/bash
 cd ..
-screen proxy.py
+cd /bin
+screen python proxy.py
