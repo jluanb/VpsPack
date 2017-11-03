@@ -1,26 +1,3 @@
 #bin/bash
 cd ..
-apt-get update && apt-get upgrade
-apt-get install build-essential automake make gcc g++
-wget https://nchc.dl.sourceforge.net/project/kingate/kingate/2.2/kingate-2.2.tar.gz
-tar xzf kingate-2.2.tar.gz
-chmod + 777 -R kingate-2.2
-cd kingate-2.2/
-./configure --prefix=/usr/local/kingate
-make && make install
-cd /usr/local/kingate/etc/
-sleep 2
-rm /usr/local/kingate/etc/kingate.conf.1
-rm /usr/local/kingate/etc/kingate.conf
-wget https://www.dropbox.com/s/xlckp6m98c4zday/kingate.conf 
-mv kingate.conf /usr/local/kingate/etc/
-sleep 2 
-mkdir /etc/init.d/kingate
-wget http://soft.vpser.net/proxy/kingate/kingate.init.d
-sleep 2
-mv kingate.init.d /etc/init.d/kingate
-chmod +x /etc/init.d/kingate/kingate.init.d
-/etc/init.d/kingate/kingate.init.d stop
-/etc/init.d/kingate/kingate.init.d start
-
-exit
+screen proxy.py
