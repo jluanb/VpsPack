@@ -49,7 +49,7 @@ class SimpleHTTPProxyHandler(BaseHTTPRequestHandler):
 
         req = self
         reqbody = None
-        req.path = "https://%s/" % req.path.replace(':80', '')
+        req.path = "https://%s/" % req.path.replace(':443', '')
 
         replaced_reqbody = self.request_handler(req, reqbody)
         if replaced_reqbody is True:
@@ -61,7 +61,7 @@ class SimpleHTTPProxyHandler(BaseHTTPRequestHandler):
             conn = socket.create_connection(address)
         except socket.error:
             return
-        self.send_response(200, '<font color="grey">By: luan-ssh</font>')
+        self.send_response(200, '<font color="blue">By: luan-ssh</font>')
         self.send_header('Connection', 'close')
         self.end_headers()
 
