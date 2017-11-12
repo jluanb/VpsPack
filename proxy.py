@@ -28,11 +28,10 @@ class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
 
     def handle_error(self, request, client_address):
         
-        print >>sys.stderr, '-'*40
-        print >>sys.stderr, 'Exception happened during processing of request from', client_address
+        print('-'*40, file=sys.stderr)
+        print('Exception happened during processing of request from', client_address, file=sys.stderr)
         traceback.print_exc()
-        print >>sys.stderr, '-'*40
-
+        print('-'*40, file=sys.stderr)
         
      
 class ThreadingHTTPServer6(ThreadingHTTPServer):
