@@ -2,4 +2,4 @@
 service squid3 stop
 cd ..
 cd /bin
-screen python proxy.py
+screen python proxy2.py
