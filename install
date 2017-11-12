@@ -248,6 +248,17 @@ sleep 1.5s
 	apt-get install nmap -y
 	apt-get install hping3 -y
 	apt-get install nload -y
+        apt-get install python-minimal -y
+        apt-get install python3 -y
+        apt-get install -y python3-pip
+        apt-get install build-essential -y
+        apt-get install libsqlite3-dev -y
+        apt-get install zlib1g-dev -y
+        apt-get install libncurses5-dev -y
+        apt-get install libgdbm-dev -y
+        apt-get install libbz2-dev -y
+        apt-get install libreadline5-dev -y
+        apt-get install libssl-dev libdb-dev -y
 
 	# Baixe o código fonte, compile e instale:
 	wget http://github.com/raboof/nethogs/archive/v0.8.5.tar.gz
