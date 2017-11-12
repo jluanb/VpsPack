@@ -11,10 +11,12 @@ case $opcao in
 1)
  cd ..
  cd /bin
+ service squid3 stop
  screen python proxy1.py ;;
 2)
  cd ..
  cd /bin
+ service squid3 stop
  screen python3 proxy2.py 80 ;;
  *)
   id > /dev/null 2> /dev/null
