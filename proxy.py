@@ -28,10 +28,10 @@ class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
 
     def handle_error(self, request, client_address):
         
-        print('-'*40, file=sys.stderr)
-        print('Exception happened during processing of request from', client_address, file=sys.stderr)
+        print >>sys.stderr, '-'*40
+        print >>sys.stderr, 'Exception happened during processing of request from', client_address
         traceback.print_exc()
-        print('-'*40, file=sys.stderr)
+        print >>sys.stderr, '-'*40
         
      
 class ThreadingHTTPServer6(ThreadingHTTPServer):
@@ -310,14 +310,17 @@ class SimpleHTTPProxyHandler(BaseHTTPRequestHandler):
 
 
 def test(HandlerClass=SimpleHTTPProxyHandler, ServerClass=ThreadingHTTPServer, protocol="HTTP/1.1"):
-    port = int(sys.argv[1])
+    if sys.argv[1:]:
+        port = int(sys.argv[1])
+    else:
+        port = 80
     server_address = ('', port)
 
     HandlerClass.protocol_version = protocol
     httpd = ServerClass(server_address, HandlerClass)
 
     sa = httpd.socket.getsockname()
-    print("Servidor: " + str(sa[0]) + " Porta " + str(sa[1]))
+    print "Serving HTTP on", sa[0], "port", sa[1], "..."
     httpd.serve_forever()
 
 
