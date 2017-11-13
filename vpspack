@@ -231,7 +231,7 @@ case $opcao in
   19)
    socks;;
   20)
-   dropbear;;
+   drop;;
   21)
    sistemadetalhes;;
 esac
