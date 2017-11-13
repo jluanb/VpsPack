@@ -13,7 +13,6 @@ case $opcao in
 1)
  cd ..
  cd /bin
- service squid3 stop
  screen python proxy1.py ;;
  2)
  cd ..
