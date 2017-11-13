@@ -227,12 +227,6 @@ net.ipv4.tcp_congestion_control=westwood" > /etc/sysctl.conf
 sysctl -p
 echo "westwood" > /proc/sys/net/ipv4/tcp_congestion_control
 
-echo -e "\033[1;32mAtivando Dropbear\033[0m"
-
-apt-get install dropbear -y 2>/dev/null
-echo "NO_START=0
-DROPBEAR_PORT=81" > /etc/default/dropbear
-
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%32s%s%-13s\n' "Instalando Vnstat, Pktstat, Ntop, Nethogs e dependencias" ; tput sgr0
 echo ""
 
