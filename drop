@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo -e "\033[1;32mAtivando Dropbear\033[0m"
 
 apt-get install dropbear -y 2>/dev/null
