@@ -183,7 +183,8 @@ echo -e "\033[1;37mEscolha uma opção:    Para Sair Ctrl + C\033[1;33m
 [\033[1;30m17\033[1;33m] attrepo \033[1;30m(Att git repo [Att repo comandos])\033[1;33m
 [\033[1;30m18\033[1;33m] attssh \033[1;30m(Att squid/ssh [Att squid/ssh])\033[1;33m
 [\033[1;30m19\033[1;33m] Install Socks \033[1;30m(Instalar Socks5)\033[1;33m
-[\033[1;30m20\033[1;33m] Sistema_Detalhes \033[1;30m(Detalhes sobre o Sistema)\033[0m"
+[\033[1;30m20\033[1;33m] Install Dropbear \033[1;30m(Direct ssh + Payload)\033[1;33m
+[\033[1;30m21\033[1;33m] Sistema_Detalhes \033[1;30m(Detalhes sobre o Sistema)\033[0m"
 read -p ": " opcao
 else
 opcao=$1
@@ -230,5 +231,7 @@ case $opcao in
   19)
    socks;;
   20)
+   dropbear;;
+  21)
    sistemadetalhes;;
 esac
