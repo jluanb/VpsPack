@@ -61,9 +61,9 @@ service ssh restart 1> /dev/null 2> /dev/null
 cd /etc/squid*
 echo "http_port 80" > squid.conf
 echo "http_port 8080" >> squid.conf
-echo "http_port 8799" >> squid.conf
-echo "http_port 3128" >> squid.conf
-echo "http_port 1080" >> squid.conf
+echo "#http_port 8799" >> squid.conf
+echo "#http_port 3128" >> squid.conf
+echo "#http_port 1080" >> squid.conf
 echo "visible_hostname luan-ssh" >> squid.conf
 echo "acl ip dstdomain -i $IP" >> squid.conf
 echo "acl ip dstdomain -i $IP1" >> squid.conf
