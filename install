@@ -9,12 +9,8 @@ echo ""
 echo "Digite o dominio"
 read -p ": " D1
 
-echo "Digite o dominio"
-read -p ": " D2
-
 IP=$(wget -qO- ipv4.icanhazip.com)
 IP1=$(host $D1 | awk '{print $NF}')
-IP2=$(host $D2 | awk '{print $NF}')
 
 apt-get update
 apt-get upgrade -y
@@ -47,7 +43,7 @@ apt-get install squid3 -y 1> /dev/null 2> /dev/null
 apt-get install ufw -y 1> /dev/null 2> /dev/null
  
 echo "PasswordAuthentication yes" > /etc/ssh/sshd_config
-echo "Port 443" >> /etc/ssh/sshd_config
+echo "Port 22" >> /etc/ssh/sshd_config
 echo "Port 2510" >> /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 echo "PermitTunnel yes" >> /etc/ssh/sshd_config
@@ -59,7 +55,7 @@ service ssh restart 1> /dev/null 2> /dev/null
 /etc/init.d/ssh restart
 
 cd /etc/squid*
-echo "http_port 80" > squid.conf
+echo "#http_port 80" > squid.conf
 echo "http_port 8080" >> squid.conf
 echo "#http_port 8799" >> squid.conf
 echo "#http_port 3128" >> squid.conf
