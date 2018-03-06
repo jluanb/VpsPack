@@ -21,3 +21,35 @@ OPTIONS=""
 PPP_RESTART=0' > /etc/default/stunnel4
 
 /etc/init.d/stunnel4 restart
+#
+#preencha o stunnel.conf como abaixo.
+#
+#cert = /etc/stunnel/stunnel.pem 
+#client = no 
+#socket = a: SO_REUSEADDR = 1 
+#socket = l: TCP_NODELAY = 1 
+#socket = r: TCP_NODELAY = 1
+#
+#[ssh] 
+#connect = 127.0.0.1:22
+#accept = 80
+#
+#Detalhes do stunnel.conf
+#A porta 80 será a SSL é opcional exemplo 8080,443 se já não estiver em uso.
+#A porta 22 redirecionada pelo SSL do seu ssh pode redireciona para o dropbear ou squid mudando a seguinte linha [ssh] para [dropbear] ou [squid] 
+#Exemplo
+#
+#[dropbear] 
+#connect = 127.0.0.1:8080
+#accept = 80
+#
+#
+#4. Criar certificados SSL
+#
+#Execute os seguintes comandos . No segundo comando preencha o certificado com os dados pedidos que são irrelevantes
+#
+#openssl genrsa -out key.pem 2048 
+#
+#openssl req -new -x509 -key key.pem -out cert.pem -days 1095
+#
+#cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
